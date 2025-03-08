@@ -1,8 +1,14 @@
-import React from "react";
+import { Helmet } from "react-helmet";
+
 
 const Statistics = () => {
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Statistics-Nexus</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div className="bg-[#9538E2] p-10  text-center text-white mb-10 ">
         <h1 className="text-3xl font-bold font-sora">Statistics</h1>
         <p className="lg:w-2xl lg:mx-auto my-2">

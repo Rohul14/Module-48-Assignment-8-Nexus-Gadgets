@@ -1,8 +1,11 @@
-
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Modal = () => {
+  const navigate = useNavigate();
+  const goToHome = () => {
+    navigate("/");
+  };
   return (
     <div>
       {/* Open the modal using document.getElementById('ID').showModal() method */}
@@ -22,11 +25,11 @@ const Modal = () => {
           <div className="mt-5 mb-2">
             <form method="dialog">
               {/* if there is a button in form, it will close the modal */}
-              <NavLink to='/'>
-                <button className="btn border w-full bg-[#9538E2] text-[#FFF] hover:bg-white hover:text-[#9538E2] rounded-3xl">
-                  Close
-                </button>
-              </NavLink>
+              <button 
+                onClick={goToHome}
+                className="btn border w-full bg-[#9538E2] text-[#FFF] hover:bg-white hover:text-[#9538E2] rounded-3xl">
+                Close
+              </button>
             </form>
           </div>
         </div>

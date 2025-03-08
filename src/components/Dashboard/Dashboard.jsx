@@ -4,6 +4,8 @@ import WishList from "../WishList/WishList";
 import StateContext from "../../context/StateContext";
 import { removeAllCardLStore } from "../../Utility/addToLs";
 import Modal from "./Modal";
+import { Helmet } from "react-helmet";
+
 
 const Dashboard = () => {
   const {card, wish, handleData, handlerSort, handleValue, totalPriceInCard}=useContext(StateContext)
@@ -24,6 +26,11 @@ const Dashboard = () => {
   return (
     <div>
       <Modal/>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Dashboard-Nexus</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div className="bg-[#9538E2] p-10 text-center text-white ">
         <h1 className="text-3xl font-bold font-sora">Dashboard</h1>
         <p className="lg:w-2xl lg:mx-auto my-2">

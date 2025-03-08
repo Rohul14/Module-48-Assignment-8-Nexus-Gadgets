@@ -46,4 +46,30 @@ const addStoredWishList=(id)=>{
     }
 }
 
-export {addStoredCardList,addStoredWishList,getStoredCardList,getStoredWishList}
+const removeLsCardList=(id)=>{
+    const storedList=getStoredCardList()
+    if (storedList.includes(id)) {
+        const storedFilter=storedList.filter(item =>item !== id)
+        console.log(storedFilter)
+        const storedListStr=JSON.stringify(storedFilter);
+        localStorage.setItem('card-list',storedListStr)
+        toast.success('Remove successfully')
+    }
+}
+const removeLsWishList=(id)=>{
+    const storedList=getStoredWishList()
+    if (storedList.includes(id)) {
+        const storedFilter=storedList.filter(item =>item !== id)
+        console.log(storedFilter)
+        const storedListStr=JSON.stringify(storedFilter);
+        localStorage.setItem('wish-list',storedListStr)
+        toast.success('Remove successfully')
+    }
+}
+
+const removeAllCardLStore=()=>{
+    const allCard=getStoredCardList()
+    localStorage.clear(allCard)
+}
+
+export {addStoredCardList,addStoredWishList,getStoredCardList,getStoredWishList,removeLsCardList,removeLsWishList,removeAllCardLStore}

@@ -20,7 +20,7 @@ const AllGadgets = () => {
       });
   }, [cat]);
 
-  console.log(allGadgets);
+  // console.log(allGadgets);
   // console.log(cat);
   return (
     <div className="mx-5 lg:mx-32">

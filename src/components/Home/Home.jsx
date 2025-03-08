@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import AllGadgets from '../AllGadgets/AllGadgets';
 import Banner from '../Banner/Banner';
 import BannerImg from '../BannerImg/BannerImg';

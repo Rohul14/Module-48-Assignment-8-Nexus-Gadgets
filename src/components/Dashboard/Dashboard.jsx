@@ -1,38 +1,29 @@
-import React, { useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
-import { getStoredCardList, getStoredWishList } from "../../Utility/addToLs";
+import React, { useContext, useEffect, useState } from "react";
 import CardList from "../CardList/CardList";
 import WishList from "../WishList/WishList";
+import StateContext from "../../context/StateContext";
+import { removeAllCardLStore } from "../../Utility/addToLs";
+import Modal from "./Modal";
 
 const Dashboard = () => {
-  const [card, setCard] = useState([]);
-  const [wish, setWish] = useState([]);
+  const {card, wish, handleData, handlerSort, handleValue, totalPriceInCard}=useContext(StateContext)
 
   const [cart, setCart] = useState("card");
-
-  const allGadgets = useLoaderData();
-
   useEffect(() => {
-    const cardList = getStoredCardList();
-    const wishList = getStoredWishList();
-    const filterCard = allGadgets.filter((gadgets) =>
-      cardList.includes(gadgets.product_id)
-    );
-    const filterWish = allGadgets.filter((gadgets) =>
-      wishList.includes(gadgets.product_id)
-    );
-    setCard(filterCard);
-    setWish(filterWish);
+    handleData()
   }, []);
+  
 
-  const handlerSort=()=>{
-    const sortCartPrice=[...card].sort((a,b)=> a.price - b.price)
-    setCard(sortCartPrice)
-    
+  const handlerRemoveAllCard=()=>{
+    removeAllCardLStore()
+    handleData()
+    handleValue()
+    document.getElementById("my_modal_1").showModal()
   }
 
   return (
     <div>
+      <Modal/>
       <div className="bg-[#9538E2] p-10 text-center text-white ">
         <h1 className="text-3xl font-bold font-sora">Dashboard</h1>
         <p className="lg:w-2xl lg:mx-auto my-2">
@@ -64,14 +55,19 @@ const Dashboard = () => {
       </div>
       {cart === "card" ? (
         <div className="mx-5 lg:mx-32">
-          <div className="flex justify-between my-6">
+          <div className="flex flex-wrap lg:flex-row justify-between my-6">
             <h1 className="text-2xl font-sora font-bold my-4">Cart</h1>
-            <div className="flex gap-3 items-center">
-              <p className="text-2xl font-sora font-bold">Total cost:</p>
+            <div className="flex  flex-wrap lg:flex-row gap-3 items-center">
+              <p className="text-2xl font-sora font-bold mr-10 lg:m-0">Total cost:{totalPriceInCard}</p>
               <button 
               onClick={handlerSort}
-              className="bg-white text-[#9538E2] border border-[#9538E2] px-5 py-2 rounded-3xl cursor-pointer font-semibold">Sort by Price</button>
-              <button className="bg-[#9538E2] text-[#FFF] border border-[#9538E2] px-5 py-2 rounded-3xl cursor-pointer font-semibold">Purchase</button>
+              className="bg-white text-[#9538E2] border border-[#9538E2] px-5 py-2 rounded-3xl cursor-pointer font-semibold"
+              >Sort by Price</button>
+
+              <button
+              onClick={handlerRemoveAllCard} 
+              className="bg-[#9538E2] text-[#FFF] border border-[#9538E2] px-5 py-2 rounded-3xl cursor-pointer font-semibold"
+              >Purchase</button>
             </div>
           </div>
           {card.map((item) => (

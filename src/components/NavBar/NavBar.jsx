@@ -8,8 +8,8 @@ const NavBar = () => {
   const textClo = location.pathname === "/" ? "text-white bg-[#9538E2] border-none shadow-none" : "text-black bg-[#F6F6F6] border-none shadow-none";
   const {cardListCount}=useContext(StateContext)
   const {wishListCount}=useContext(StateContext)
-  const cardList = getStoredCardList();
-  const wishList = getStoredWishList();
+  // const cardList = getStoredCardList();
+  // const wishList = getStoredWishList();
   return (
     <div>
       <div className="navbar px-6 lg:px-20 py-12 relative z-10">
@@ -80,7 +80,7 @@ const NavBar = () => {
             </button>
             <div>
               <sup className="mt-1 -ml-1.5 text-red-500 font-semibold bg-white rounded-full p-0.5 px-2">
-                {cardList.length}
+                {cardListCount.length}
               </sup>
             </div>
           </div>
@@ -94,7 +94,7 @@ const NavBar = () => {
             </button>
             <div>
               <sup className="mt-1 -ml-1.5 text-red-500 font-semibold bg-white rounded-full p-0.5 px-2">
-                {wishList.length}
+                {wishListCount.length}
               </sup>
             </div>
           </div>

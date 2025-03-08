@@ -1,9 +1,19 @@
 import PropTypes from "prop-types";
 import { MdOutlineCancel } from "react-icons/md";
+import { removeLsCardList } from "../../Utility/addToLs";
+import { useContext } from "react";
+import StateContext from "../../context/StateContext";
 
 const CardList = ({ cart }) => {
 //   console.log(card);
-  const { product_title, description, price, product_image } = cart;
+  const { product_title, description, price, product_image ,product_id} = cart;
+  const {handleData,handleValue}=useContext(StateContext)
+
+  const handlerRemoveCard=(id)=>{
+    removeLsCardList(id)
+    handleData()
+    handleValue()
+  }
   return (
     <div>
       <div className="flex flex-col lg:flex-row justify-between items-center bg-white border-2 border-[#f1ebeb] my-5 p-4 rounded-lg">
@@ -16,7 +26,9 @@ const CardList = ({ cart }) => {
           </div>
         </div>
         <div>
-          <p className="text-3xl text-red-500 cursor-pointer">
+          <p 
+            onClick={()=>handlerRemoveCard(product_id)}
+            className="text-3xl text-red-500 cursor-pointer">
             <MdOutlineCancel />
           </p>
         </div>

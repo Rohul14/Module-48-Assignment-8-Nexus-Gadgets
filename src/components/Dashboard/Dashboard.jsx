@@ -62,10 +62,10 @@ const Dashboard = () => {
       </div>
       {cart === "card" ? (
         <div className="mx-5 lg:mx-32">
-          <div className="flex flex-wrap lg:flex-row justify-between my-6">
+          <div className="flex flex-col lg:flex-row justify-between my-6">
             <h1 className="text-2xl font-sora font-bold my-4">Cart</h1>
-            <div className="flex  flex-wrap lg:flex-row gap-3 items-center">
-              <p className="text-2xl font-sora font-bold mr-10 lg:m-0">Total cost:{totalPriceInCard}</p>
+            <div className="flex  flex-col lg:flex-row gap-3 items-center">
+              <p className="text-2xl font-sora font-bold  lg:m-0">Total cost:{totalPriceInCard}</p>
               <button 
               onClick={handlerSort}
               className="bg-white text-[#9538E2] border border-[#9538E2] px-5 py-2 rounded-3xl cursor-pointer font-semibold"

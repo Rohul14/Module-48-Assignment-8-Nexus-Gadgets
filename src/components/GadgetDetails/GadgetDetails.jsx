@@ -7,6 +7,7 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import { addStoredCardList, addStoredWishList } from "../../Utility/addToLs";
 import { useContext } from "react";
 import StateContext from "../../context/StateContext";
+import { Helmet } from "react-helmet";
 
 const GadgetDetails = () => {
   const { productId } = useParams();
@@ -40,6 +41,9 @@ const GadgetDetails = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>GadgetDetails</title>
+      </Helmet>
       <div className="bg-[#9538E2] p-10 pb-52 text-center text-white ">
         <h1 className="text-3xl font-bold font-sora">Product Details</h1>
         <p className="lg:w-2xl lg:mx-auto my-2">

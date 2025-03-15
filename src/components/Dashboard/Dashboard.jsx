@@ -27,9 +27,7 @@ const Dashboard = () => {
     <div>
       <Modal/>
       <Helmet>
-        <meta charSet="utf-8" />
         <title>Dashboard-Nexus</title>
-        <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
       <div className="bg-[#9538E2] p-10 text-center text-white ">
         <h1 className="text-3xl font-bold font-sora">Dashboard</h1>
